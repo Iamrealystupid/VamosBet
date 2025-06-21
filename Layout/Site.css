@@ -1,0 +1,90 @@
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0d0d0d;
+}
+
+header h1 {
+    color: #ff6200;
+    margin: 0;
+}
+
+.auth-buttons button {
+    background-color: #ff6200;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h2 {
+    color: #ff6200;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+.buttons button {
+    background-color: #ff6200;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.buttons .learn {
+    background-color: #555;
+}
+
+.featured-games {
+    padding: 20px;
+    text-align: center;
+}
+
+.featured-games h3 {
+    color: #ff6200;
+}
+
+.game-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    background-color: #2a2a2a;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.game-card h4 {
+    color: #ff6200;
+}
+
+.game-card p {
+    color: #ccc;
+}
