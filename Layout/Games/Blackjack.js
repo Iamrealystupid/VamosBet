@@ -1,5 +1,3 @@
-// blackjack.js
-
 class Card {
     constructor(suit, value) {
         this.suit = suit;
@@ -12,18 +10,8 @@ class Card {
         return parseInt(this.value);
     }
 
-    toString() {
-        return `${this.value}${this.suit}`;
-    }
-
     getDisplay() {
-        const suitIcons = {
-            "♠": "♠",
-            "♥": "♥",
-            "♦": "♦",
-            "♣": "♣"
-        };
-        return `${this.value}${suitIcons[this.suit]}`;
+        return `${this.value}${this.suit}`;
     }
 }
 
@@ -32,13 +20,11 @@ class Deck {
         this.cards = [];
         const suits = ["♠", "♥", "♦", "♣"];
         const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-
         for (const suit of suits) {
             for (const value of values) {
                 this.cards.push(new Card(suit, value));
             }
         }
-
         this.shuffle();
     }
 
@@ -65,57 +51,76 @@ class Hand {
 
     getScore() {
         let total = 0;
-        let aceCount = 0;
-
-        for (const card of this.cards) {
+        let aces = 0;
+        for (let card of this.cards) {
             total += card.getScoreValue();
-            if (card.value === "A") aceCount++;
+            if (card.value === "A") aces++;
         }
-
-        while (total > 21 && aceCount > 0) {
+        while (total > 21 && aces > 0) {
             total -= 10;
-            aceCount--;
+            aces--;
         }
-
         return total;
     }
 }
 
 let deck, dealerHand, playerHand;
+let showDealerSecondCard = false;
 
+function startGame() {
+    deck = new Deck();
+    dealerHand = new Hand();
+    playerHand = new Hand();
+    showDealerSecondCard = false;
+
+    dealerHand.addCard(deck.draw());
+    dealerHand.addCard(deck.draw());
+    playerHand.addCard(deck.draw());
+    playerHand.addCard(deck.draw());
+
+    document.getElementById("status").innerText = "BLACKJACK PAYS 3 TO 2";
+
+    document.getElementById("hit").disabled = false;
+    document.getElementById("stand").disabled = false;
+    document.querySelector("button[onclick='startGame()']").disabled = true; // 🚫 Disable Bet
+
+    renderCards();
+}
 function renderCards() {
     const dealerEl = document.getElementById("dealer-cards");
     const playerEl = document.getElementById("player-cards");
-
     dealerEl.innerHTML = "";
     playerEl.innerHTML = "";
 
     dealerHand.cards.forEach((card, i) => {
         const div = document.createElement("div");
         div.className = "card";
+        div.style.setProperty('--deal-delay', `${i * 0.2}s`);
         if (i === 1 && !showDealerSecondCard) {
-            div.classList.add("hidden");
+            div.classList.add("back");
         } else {
             div.innerText = card.getDisplay();
         }
         dealerEl.appendChild(div);
     });
 
-    playerHand.cards.forEach(card => {
+    playerHand.cards.forEach((card, i) => {
         const div = document.createElement("div");
         div.className = "card";
+        div.style.setProperty('--deal-delay', `${i * 0.2}s`);
         div.innerText = card.getDisplay();
         playerEl.appendChild(div);
     });
 
-    document.getElementById("dealer-score").innerText = showDealerSecondCard ? dealerHand.getScore() : dealerHand.cards[0].getScoreValue();
+    document.getElementById("dealer-score").innerText =
+        showDealerSecondCard ? dealerHand.getScore() : dealerHand.cards[0].getScoreValue();
+
     document.getElementById("player-score").innerText = playerHand.getScore();
 }
 
 function checkGameOver() {
-    const playerScore = playerHand.getScore();
-    if (playerScore > 21) {
-        document.getElementById("status").innerText = "You busted! Dealer wins.";
+    if (playerHand.getScore() > 21) {
+        document.getElementById("status").innerText = "You busted!";
         disableActions();
         showDealerSecondCard = true;
         renderCards();
@@ -129,6 +134,7 @@ function dealerTurn() {
     while (dealerHand.getScore() < 17) {
         dealerHand.addCard(deck.draw());
     }
+
     renderCards();
 
     const playerScore = playerHand.getScore();
@@ -137,10 +143,10 @@ function dealerTurn() {
 
     if (dealerScore > 21 || playerScore > dealerScore) {
         status.innerText = "You win!";
-    } else if (dealerScore === playerScore) {
-        status.innerText = "Push. It's a tie.";
+    } else if (playerScore === dealerScore) {
+        status.innerText = "Push!";
     } else {
-        status.innerText = "Dealer wins.";
+        status.innerText = "Dealer wins!";
     }
 
     disableActions();
@@ -149,27 +155,7 @@ function dealerTurn() {
 function disableActions() {
     document.getElementById("hit").disabled = true;
     document.getElementById("stand").disabled = true;
-}
-
-let showDealerSecondCard = false;
-
-function startGame() {
-    deck = new Deck();
-    dealerHand = new Hand();
-    playerHand = new Hand();
-    showDealerSecondCard = false;
-
-    document.getElementById("status").innerText = "BLACKJACK PAYS 3 TO 2"
-
-    dealerHand.addCard(deck.draw());
-    dealerHand.addCard(deck.draw());
-    playerHand.addCard(deck.draw());
-    playerHand.addCard(deck.draw());
-
-    renderCards();
-
-    document.getElementById("hit").disabled = false;
-    document.getElementById("stand").disabled = false;
+    document.querySelector("button[onclick='startGame()']").disabled = false; // ✅ Enable Bet again
 }
 
 document.getElementById("hit").addEventListener("click", () => {
@@ -183,11 +169,11 @@ document.getElementById("stand").addEventListener("click", () => {
 });
 
 function halveBet() {
-    let input = document.getElementById("bet-amount");
+    const input = document.getElementById("bet-amount");
     input.value = Math.floor(Number(input.value) / 2);
 }
 
 function doubleBet() {
-    let input = document.getElementById("bet-amount");
+    const input = document.getElementById("bet-amount");
     input.value = Number(input.value) * 2;
 }

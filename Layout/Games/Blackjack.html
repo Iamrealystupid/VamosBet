@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VamosBet Blackjack</title>
-  <link rel="stylesheet" href="nav.css" />
-  <link rel="stylesheet" href="blackjack.css" />
+  <link rel="stylesheet" href="Blackjack.css" />
 </head>
 <body>
-  <!-- Navbar will load dynamically here -->
-  <div id="navbar"></div>
 
-  <!-- Blackjack game layout -->
+  <header class="site-header">
+    <h1 class="logo">VamosBet</h1>
+    <div class="nav-icons">
+      <a href="/layout/site.html" class="home-btn">HOME</a>
+      <button class="icon-btn">👤</button>
+    </div>
+  </header>
+
   <div class="blackjack-container">
     <div class="game-window">
+
+      <!-- Sidebar Controls -->
       <div class="controls">
-        <label for="bet-amount">Bet Amount</label>
+        <h3>Bet Amount</h3>
         <input type="number" id="bet-amount" value="100" />
         <div class="bet-controls">
           <button onclick="halveBet()">½</button>
@@ -24,41 +30,29 @@
         <button onclick="startGame()">Bet</button>
         <button id="hit" disabled>Hit</button>
         <button id="stand" disabled>Stand</button>
+        <div class="status-text" id="status">BLACKJACK PAYS 3 TO 2</div>
       </div>
 
+      <!-- Main Game Table -->
       <div class="game-table">
-        <div class="blackjack-banner">BLACKJACK PAYS 3 TO 2</div>
-
-        <div class="dealer-area">
+        <div class="hand-area">
           <div class="hand-label">Dealer</div>
-          <div class="score-bubble" id="dealer-score"></div>
+          <div class="score" id="dealer-score">0</div>
           <div class="card-row" id="dealer-cards"></div>
         </div>
 
-        <div class="player-area">
+        <div class="hand-area">
           <div class="hand-label">You</div>
-          <div class="score-bubble" id="player-score"></div>
+          <div class="score" id="player-score">0</div>
           <div class="card-row" id="player-cards"></div>
         </div>
 
-        <div class="game-status" id="status">BLACKJACK PAYS 3 TO 2</div>
+        <div class="bottom-status" id="status-bottom">Place your bet to begin.</div>
       </div>
+
     </div>
   </div>
 
-  <!-- Load nav.html dynamically -->
-  <script>
-    fetch('nav.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('navbar').innerHTML = html;
-        const script = document.createElement('script');
-        script.src = 'nav.js';
-        document.body.appendChild(script);
-      });
-  </script>
-
-  <!-- Blackjack game logic -->
-  <script src="blackjack.js"></script>
+  <script src="Blackjack.js"></script>
 </body>
 </html>

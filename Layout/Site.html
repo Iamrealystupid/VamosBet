@@ -1,85 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VamosBet</title>
-    <link rel="stylesheet" href="Site.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VamosBet</title>
+  <link rel="stylesheet" href="Site.css" />
 </head>
 <body>
-    <header>
-        <h1>VamosBet</h1>
-        <div class="auth-buttons" id="authButtons">
-            <button id="loginBtn">Login</button>
-            <button id="signUpBtn">Sign Up</button>
-            <button id="logoutBtn" style="display: none;">Logout</button>
-        </div>
-    </header>
-    <main>
-        <section class="hero">
-            <h2>Let's Go Win. Let's Go VamosBet!</h2>
-            <p>Experience the ultimate online casino with provably fair gaming, cryptographic security, and instant payouts. Your winning journey starts here.</p>
-            <div class="buttons">
-                <button class="start">Start Playing Now</button>
-                <button class="learn">Learn More</button>
-            </div>
-        </section>
-        <section class="featured-games">
-            <h3>Featured Games</h3>
-            <div class="game-cards">
-                <div class="game-card">
-                    <span>🎰</span>
-                    <h4>Slots</h4>
-                    <p>Spin to win big with our exciting 3x slot machines!</p>
-                </div>
-               <a href="Games/blackjack.html" class="game-card-link">
-                   <div class="game-card">
-                       <span>🃏</span>
-                        <h4>Blackjack</h4>
-                       <p>Test your skills against the dealer in this classic card game!</p>
-                   </div>
-                 </a>
-                <div class="game-card">
-                    <span>🎲</span>
-                    <h4>Dice</h4>
-                    <p>Roll the dice and predict the outcome!</p>
-                </div>
-                <div class="game-card">
-                    <span>📈</span>
-                    <h4>Crash</h4>
-                    <p>Cash out before the crash for big wins!</p>
-                </div>
-                <div class="game-card">
-                    <span>👑</span>
-                    <h4>Rock Paper Scissors</h4>
-                    <p>Classic game of chance against the house!</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    <div id="authModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">×</span>
-            <h2 id="modalTitle">Login</h2>
-            <form id="authForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" id="submitBtn">Login</button>
-            </form>
-            <p id="switchMode">Don't have an account? <span id="toggleAuth">Sign Up</span></p>
-        </div>
+  <!-- Splash Screen -->
+  <div id="splashScreen">
+    <img src="assets/kkk.png" alt="VamosBet Logo" class="splash-logo" />
+  </div>
+
+  <header>
+    <h1>VamosBet</h1>
+    <div class="auth-buttons" id="authButtons">
+      <button id="loginBtn">Login</button>
+      <button id="signUpBtn">Sign Up</button>
+      <button id="logoutBtn" style="display: none;">Logout</button>
     </div>
-    <div id="learnMoreModal" class="modal" style="display: none;">
-        <div class="modal-content medium">
-            <span class="close">×</span>
-            <h2>Learn More About VamosBet</h2>
-            <p>Welcome to VamosBet, your premier destination for online casino gaming! We offer a variety of games with provably fair mechanics, ensuring transparency and trust. Our platform uses advanced cryptographic security to protect your data and provides instant payouts for a seamless experience. Whether you're a fan of slots, dice, crash, or classic games like Rock Paper Scissors, there's something for everyone. Start your winning journey today!</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Let's Go Win. Let's Go VamosBet!</h2>
+      <p>
+        Experience the ultimate online casino with provably fair gaming,
+        cryptographic security, and instant payouts. Your winning journey starts
+        here.
+      </p>
+      <div class="buttons">
+        <button class="start">Start Playing Now</button>
+        <button class="learn">Learn More</button>
+      </div>
+    </section>
+
+    <section class="featured-games">
+      <h3>Featured Games</h3>
+      <div class="game-cards">
+        <div class="game-card">
+          <span>🎰</span>
+          <h4>Slots</h4>
+          <p>Spin to win big with our exciting 3x slot machines!</p>
         </div>
+          <a href="Games/blackjack.html" class="game-card-link">
+          <div class="game-card">
+            <span>🃏</span>
+            <h4>Blackjack</h4>
+            <p>Test your skills against the dealer in this classic card game!</p>
+          </div>
+        </a>
+        <div class="game-card">
+          <span>🎲</span>
+          <h4>Dice</h4>
+          <p>Roll the dice and predict the outcome!</p>
+        </div>
+        <div class="game-card">
+          <span>📈</span>
+          <h4>Crash</h4>
+          <p>Cash out before the crash for big wins!</p>
+        </div>
+        <div class="game-card">
+          <span>👑</span>
+          <h4>Rock Paper Scissors</h4>
+          <p>Classic game of chance against the house!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">×</span>
+      <h2 id="modalTitle">Login</h2>
+      <form id="authForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit" id="submitBtn">Login</button>
+      </form>
+      <p id="switchMode">
+        Don't have an account? <span id="toggleAuth">Sign Up</span>
+      </p>
     </div>
-    
-    <!-- layout home page only -->
-    <script src="basicSite.js"></script>
-    
-    
+  </div>
+
+  <!-- Learn More Modal -->
+  <div id="learnMoreModal" class="modal">
+    <div class="modal-content medium">
+      <span class="close">×</span>
+      <h2>Learn More About VamosBet</h2>
+      <p>
+        Welcome to VamosBet, your premier destination for online casino gaming!
+        We offer a variety of games with provably fair mechanics, ensuring
+        transparency and trust. Our platform uses advanced cryptographic
+        security to protect your data and provides instant payouts for a
+        seamless experience. Whether you're a fan of slots, dice, crash, or
+        classic games like Rock Paper Scissors, there's something for everyone.
+        Start your winning journey today!
+      </p>
+    </div>
+  </div>
+
+  <script src="basicSite.js"></script>
 </body>
 </html>
