@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    background-color: #1a1a1a;
+    padding: 16px 32px;
+    font-size: 24px;
+    color: #ff6600;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-icons .icon-btn {
+    background: none;
+    border: none;
+    color: #ff6600;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.game-area {
+    flex: 1;
+    display: flex;
+    background-color: #121212;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #222;
+}
+
+.sidebar input {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.sidebar button {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sidebar .small-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sidebar .small-buttons button {
+    width: 48%;
+    background-color: #2c2c2c;
+    color: #ff6600;
+}
+
+.status {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ff6600;
+}
+
+.board {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 100px;
+    height: 140px;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card.hidden {
+    background-color: #0047ab;
+    color: transparent;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Card_back_05.svg/120px-Card_back_05.svg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.score {
+    font-size: 20px;
+    background-color: #2c2c2c;
+    padding: 6px 16px;
+    border-radius: 20px;
+    color: #ff6600;
+    margin-bottom: 8px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VamosBet Blackjack</title>
+    <link rel="stylesheet" href="blackjack.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            VamosBet
+            <div class="nav-icons">
+                <button class="icon-btn">🏠</button>
+                <button class="icon-btn">👤</button>
+            </div>
+        </div>
+        <div class="game-area">
+            <div class="sidebar">
+                <label>Bet Amount</label>
+                <input type="number" id="bet-amount" value="100" />
+                <div class="small-buttons">
+                    <button onclick="halveBet()">½</button>
+                    <button onclick="doubleBet()">2x</button>
+                </div>
+                <button onclick="startGame()">Bet</button>
+                <button id="hit">Hit</button>
+                <button id="stand">Stand</button>
+                <div class="status" id="status">BLACKJACK PAYS 3 TO 2<br>INSURANCE PAYS 2 TO 1</div>
+            </div>
+            <div class="board">
+                <div class="row">
+                    <div class="score">Dealer: <span id="dealer-score">0</span></div>
+                    <div class="cards" id="dealer-cards"></div>
+                </div>
+                <div class="row">
+                    <div class="score">You: <span id="player-score">0</span></div>
+                    <div class="cards" id="player-cards"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="blackjack.js"></script>
+</body>
+</html>

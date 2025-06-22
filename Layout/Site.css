@@ -148,3 +148,7 @@ header h1 {
     padding: 10px;
     cursor: pointer;
 }
+a.game-card-link {
+  text-decoration: none;
+  color: inherit;
+}
